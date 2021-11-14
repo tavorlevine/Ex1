@@ -24,3 +24,20 @@ class Elevator:
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime, self.stopTime)
         return st
 
+    def getTimeForOpen(self):
+        return self.openTime
+
+    def getTimeForClose(self):
+        return self.closeTime
+
+    def getSpeed(self):
+        return self.speed
+
+    def getStartTime(self):
+        return self.startTime
+
+    def getStopTime(self):
+        return self.stopTime
+
+    def getId(self):
+        return self.id
