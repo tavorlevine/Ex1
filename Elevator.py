@@ -22,13 +22,19 @@ class Elevator:
         self.startTime = startTime
         self.stopTime = stopTime
         self.list_c = []
+        self.direct = 0
 
     def toString(self):
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime, self.stopTime)
         return st
 
     def addCalls(self, c: CallForElevator):
-        self.list_c.__add__(c)
+        self.list_c.append(c)
+        if self.list_c.count() == 1:
+            self.direct = c.direc
+
+    def getList(self):
+        return self.list_c
 
     def getTimeForOpen(self):
         return self.openTime

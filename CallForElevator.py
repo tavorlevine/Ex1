@@ -1,5 +1,5 @@
 import csv
-from Elevator import Elevator
+
 
 
 class CallForElevator:
@@ -8,16 +8,18 @@ class CallForElevator:
     # GOING2DEST = 2
     # DONE = 3
 
-    def __init__(self, time: int, src: int, dest: int, elev: int):
+    def __init__(self, header, time: int, src: int, dest: int, parmeter: int, elev: int):
         # self.state = INIT
+        self.header = header
         self.time = time
         self.src = src
         self.dest = dest
+        self.parmeter = parmeter
         self.elev = elev
-        if self.dest - self.src > 0:
-            self.direc = 1
-        else:
-            self.direc = -1
+        # if self.dest - self.src > 0:
+        #     self.direc = 1
+        # else:
+        #     self.direc = -1
 
     # def getState(self):
     #     return self.state
@@ -42,6 +44,7 @@ class CallForElevator:
 
     def toString(self):
         st = "time:{}, src:{}, dest:{}, elevator:{}".format(self.time, self.src, self.dest, self.elev)
+        return st
 
 
 # if __name__ == "__main__":

@@ -1,7 +1,6 @@
 import json
 from Elevator import Elevator
 
-
 class Building:
 
     # def __init__(self,minFloor: int, maxFloor: int, elevList: []):
