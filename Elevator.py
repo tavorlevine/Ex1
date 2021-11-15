@@ -1,3 +1,6 @@
+from CallForElevator import CallForElevator
+
+
 class Elevator:
     # id = 0
     # minFloor = 0
@@ -16,13 +19,16 @@ class Elevator:
         self.closeTime = closeTime
         #self.pos = pos
         #self.state = state
-
         self.startTime = startTime
         self.stopTime = stopTime
+        self.list_c = []
 
     def toString(self):
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime, self.stopTime)
         return st
+
+    def addCalls(self, c: CallForElevator):
+        self.list_c.__add__(c)
 
     def getTimeForOpen(self):
         return self.openTime
