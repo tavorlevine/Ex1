@@ -87,6 +87,6 @@ class Building:
 
 
 if __name__ == '__main__':
-    b1 = Building(r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B1.json")
+    b1 = Building(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B1.json")
     print(b1.toString())
     print(b1.elevators[0].speed)
