@@ -23,6 +23,7 @@ class Elevator:
         self.stopTime = stopTime
         self.list_c = []
         self.direct = 0
+        # self.sumStages = 0
 
     def toString(self):
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime, self.stopTime)
