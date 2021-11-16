@@ -34,12 +34,14 @@ def allocate(self, calls: listCalls, file):
                                 if elevtime < time:
                                     time = elevtime
                                     tempelev = elev.id
+                                break
                             elif c2.time < c.time:
                                 sumOfCall = len(elev.list_c) - elev.list_c.index(c2)
                                 elevtime = self.timeSumCalls(sumOfCall, c2.dest, c, elev)
                                 if elevtime < time:
                                     time = elevtime
                                     tempelev = elev.id
+                                break
         c.elev = tempelev
     calls.writeToCSV(calls.file)
 
