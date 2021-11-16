@@ -27,7 +27,8 @@ def allocate(self, calls: listCalls, file):
                             time = elevtime
                             tempelev = elev.id
                     else:
-                        for c2 in elev.list_c.reverse:
+                        list_2 = elev.list_c.reverse
+                        for c2 in list_2:
                             if c2.time + self.timeOneCall(elev.list_c[c2.id - 1].dest, c2, elev) < c.time:
                                 elevtime = self.timeOneCall(c2.dest, c, elev)
                                 if elevtime < time:
