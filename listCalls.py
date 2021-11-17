@@ -1,7 +1,5 @@
 import csv
-from Elevator import Elevator
 from CallForElevator import CallForElevator
-from Building import Building
 # from algo import algo
 
 

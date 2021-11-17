@@ -10,78 +10,87 @@ import math
 
 class algo:
 
-    def __init__(self, building: string, calls: string, out: string):
+    def __init__(self, building: str, calls: str, out: str):
         # self.build = building
         # self.calls = calls
         self.output = out
         self.list = listCalls(calls)
-        self.b = building(building)
+        self.b = Building(building)
         self.allocate(self.list)
+
     # if __name__ == "__main__":
-    #     alg = algo(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_a.csv")
+
     #     calls = listCalls(file_name)
     #     allocate(calls)
     # if __name__ == '__main__':
-    #    al = algo(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B1.json", r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_b.csv", r"out.csv")
+
     #    al.allocate(al.list)
 
-    def allocate(self, calls: listCalls):
-        for c in calls:
-            if self.Building.count == 1:
+    def allocate(self, list1: listCalls):
+        for c in list1.calls:
+            if self.b.count == 1:
                 c.elev = 0
             else:
                 time = 9999999
                 tempelev = -1
-                for elev in Building.elevators:
-                    if elev.list_c.count() == 0:
-                        elevtime = self.timeFromTo(c, elev)
+                for elev in self.b.elevators:
+                    if len(elev.list_c) == 0:
+                        elevtime = timeFromTo(c, elev)
                         if elevtime < time:
                             time = elevtime
-                            tempelev = elev.index
+                            tempelev = elev.id
                     else:
-                        if elev.list_c[-1].time + self.timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
-                                                                   elev.list_c[-1],
-                                                                   elev) < c.time:
-                            elevtime = self.timeOneCall(elev.list_c[-1].dest, c, elev)
+                        if elev.list_c[len(elev.list_c) - 1].time + timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
+                                                              elev.list_c[-1],
+                                                              elev) < c.time:
+                            elevtime = timeOneCall(elev.list_c[-1].dest, c, elev)
                             if elevtime < time:
                                 time = elevtime
-                                tempelev = elev.index
+                                tempelev = elev.id
                         else:
-                            list_2 = elev.list_c.reverse
+                            list_2 = reverse_list(elev.list_c)
                             for c2 in list_2:
-                                if c2.time + self.timeOneCall(elev.list_c[c2.id - 1].dest, c2, elev) < c.time:
-                                    elevtime = self.timeOneCall(c2.dest, c, elev)
+                                if list_2.index(c2) == (len(list_2) - 1):
+                                    sumOfCall = len(elev.list_c) - elev.list_c.index(c2)
+                                    elevtime = timeSumCalls(sumOfCall, c2.dest, c, elev)
+                                elif c2.time + timeOneCall(list_2[list_2.index(c2) + 1].dest, c2, elev) < c.time:
+                                    elevtime = timeOneCall(c2.dest, c, elev)
                                     if elevtime < time:
                                         time = elevtime
-                                        tempelev = elev.index
+                                        tempelev = elev.id
                                     break
                                 elif c2.time < c.time:
                                     sumOfCall = len(elev.list_c) - elev.list_c.index(c2)
-                                    elevtime = self.timeSumCalls(sumOfCall, c2.dest, c, elev)
+                                    elevtime = timeSumCalls(sumOfCall, c2.dest, c, elev)
                                     if elevtime < time:
                                         time = elevtime
-                                        tempelev = elev.index
+                                        tempelev = elev.id
                                     break
             c.elev = tempelev
-        calls.writeToCSV(self.output)
+            self.b.elevators[tempelev].addCalls(c)
+        list1.writeToCSV(self.output)
+
+# def allocate1 (self, list1: listCalls):
+#     for c in list1.calls:
+#         if (abs(c.dest - c.src) < self.b.min)
 
 
-def timeFromTo(self, c: CallForElevator, elev: Elevator):
-    if elev.list_c.count() == 0:
-        stages = abs(0 - c.src)
-        stages = stages + abs(c.src - c.dest)
-        elevtime = (elev.speed / stages) + elev.stopTime + elev.startTime + elev.openTime + elev.closeTime
-        return elevtime
+def timeFromTo(c: CallForElevator, elev: Elevator):
+    # if len(elev.list_c) == 0:
+    stages = abs(0 - c.src)
+    stages = stages + abs(c.src - c.dest)
+    elevtime = (elev.speed / stages) + elev.stopTime + elev.startTime + elev.openTime + elev.closeTime
+    return elevtime
 
 
-def timeOneCall(self, pos: int, c: CallForElevator, elev: Elevator):
+def timeOneCall(pos: int, c: CallForElevator, elev: Elevator):
     stages = abs(pos - c.src)
     stages = stages + abs(c.src - c.dest)
     elevtime = (elev.speed / stages) + elev.stopTime + elev.startTime + elev.openTime + elev.closeTime
     return elevtime
 
 
-def timeSumCalls(self, sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
+def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
     stages = abs(pos - c.getSrc())
     stages = stages + abs(c.src - c.dest)
     elevtime = (elev.speed / stages) + (elev.stopTime + elev.startTime + elev.openTime) * sum_2 + elev.closeTime * (

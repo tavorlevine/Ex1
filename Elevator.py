@@ -1,4 +1,5 @@
 from CallForElevator import CallForElevator
+from listCalls import listCalls
 
 
 class Elevator:
@@ -10,30 +11,35 @@ class Elevator:
     # speed = 0
     # startTime = 0
     # stopTime = 0
-    def __init__(self, id_1: int, speed: float, minFloor: int, maxFloor: int, closeTime: float, openTime: float, startTime: float, stopTime: float, index: int):
+    def __init__(self, id_1: int, speed: float, minFloor: int, maxFloor: int, closeTime: float, openTime: float,
+                 startTime: float, stopTime: float, index: int):
         self.id = id_1
         self.speed = speed
         self.minFloor = minFloor
         self.maxFloor = maxFloor
         self.openTime = openTime
         self.closeTime = closeTime
-        #self.pos = pos
-        #self.state = state
+        # self.pos = pos
+        # self.state = state
         self.startTime = startTime
         self.stopTime = stopTime
         self.list_c = []
         self.direct = 0
         self.index = index
+        self.sum = 0
         # self.sumStages = 0
 
     def toString(self):
-        st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime, self.stopTime)
+        st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(
+            self.id, self.speed, self.minFloor, self.maxFloor, self.openTime, self.closeTime, self.startTime,
+            self.stopTime)
         return st
 
     def addCalls(self, c: CallForElevator):
         self.list_c.append(c)
-        if self.list_c.count() == 1:
-            self.direct = c.direc
+        self.sum = self.sum + 1
+        # if len(self.list_c) == 1:
+        #     self.direct = c.direc
 
     def getList(self):
         return self.list_c
