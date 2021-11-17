@@ -21,9 +21,11 @@ class Building:
             with open(file_name, "r+") as f:
                 my_d = json.load(f)
                 elevs_list = my_d["_elevators"]
+                i = 0
                 for v in elevs_list:
-                    elev = Elevator(v["_id"], v["_speed"], v["_minFloor"], v["_maxFloor"], v["_openTime"], v["_closeTime"], v["_startTime"], v["_stopTime"])
+                    elev = Elevator(v["_id"], v["_speed"], v["_minFloor"], v["_maxFloor"], v["_openTime"], v["_closeTime"], v["_startTime"], v["_stopTime"], i)
                     self.elevators.append(elev)
+                    i = i+1
 
         except IOError as e:
             print(e)

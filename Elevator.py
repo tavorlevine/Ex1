@@ -10,7 +10,7 @@ class Elevator:
     # speed = 0
     # startTime = 0
     # stopTime = 0
-    def __init__(self, id_1: int, speed: float, minFloor: int, maxFloor: int, closeTime: float, openTime: float, startTime: float, stopTime: float):
+    def __init__(self, id_1: int, speed: float, minFloor: int, maxFloor: int, closeTime: float, openTime: float, startTime: float, stopTime: float, index: int):
         self.id = id_1
         self.speed = speed
         self.minFloor = minFloor
@@ -23,6 +23,7 @@ class Elevator:
         self.stopTime = stopTime
         self.list_c = []
         self.direct = 0
+        self.index = index
         # self.sumStages = 0
 
     def toString(self):

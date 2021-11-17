@@ -16,7 +16,7 @@ class algo:
         self.output = out
         self.list = listCalls(calls)
         self.b = building(building)
-
+        self.allocate(self.list)
     # if __name__ == "__main__":
     #     alg = algo(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_a.csv")
     #     calls = listCalls(file_name)
@@ -25,7 +25,7 @@ class algo:
     #    al = algo(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B1.json", r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_b.csv", r"out.csv")
     #    al.allocate(al.list)
 
-    def allocate(self, calls: listCalls, file):
+    def allocate(self, calls: listCalls):
         for c in calls:
             if self.Building.count == 1:
                 c.elev = 0
@@ -37,7 +37,7 @@ class algo:
                         elevtime = self.timeFromTo(c, elev)
                         if elevtime < time:
                             time = elevtime
-                            tempelev = elev.id
+                            tempelev = elev.index
                     else:
                         if elev.list_c[-1].time + self.timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
                                                                    elev.list_c[-1],
@@ -45,7 +45,7 @@ class algo:
                             elevtime = self.timeOneCall(elev.list_c[-1].dest, c, elev)
                             if elevtime < time:
                                 time = elevtime
-                                tempelev = elev.id
+                                tempelev = elev.index
                         else:
                             list_2 = elev.list_c.reverse
                             for c2 in list_2:
@@ -53,14 +53,14 @@ class algo:
                                     elevtime = self.timeOneCall(c2.dest, c, elev)
                                     if elevtime < time:
                                         time = elevtime
-                                        tempelev = elev.id
+                                        tempelev = elev.index
                                     break
                                 elif c2.time < c.time:
                                     sumOfCall = len(elev.list_c) - elev.list_c.index(c2)
                                     elevtime = self.timeSumCalls(sumOfCall, c2.dest, c, elev)
                                     if elevtime < time:
                                         time = elevtime
-                                        tempelev = elev.id
+                                        tempelev = elev.index
                                     break
             c.elev = tempelev
         calls.writeToCSV(self.output)
