@@ -3,14 +3,7 @@ from listCalls import listCalls
 
 
 class Elevator:
-    # id = 0
-    # minFloor = 0
-    # maxFloor = 0
-    # timeForOpen = 0
-    # timeForClose = 0
-    # speed = 0
-    # startTime = 0
-    # stopTime = 0
+
     def __init__(self, id_1: int, speed: float, minFloor: int, maxFloor: int, closeTime: float, openTime: float,
                  startTime: float, stopTime: float, index: int):
         self.id = id_1
@@ -24,10 +17,11 @@ class Elevator:
         self.startTime = startTime
         self.stopTime = stopTime
         self.list_c = []
-        self.direct = 0
+        # self.direct = 0
         self.index = index
         self.sum = 0
         # self.sumStages = 0
+        # self.direction = 0
 
     def toString(self):
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(
@@ -40,6 +34,10 @@ class Elevator:
         self.sum = self.sum + 1
         # if len(self.list_c) == 1:
         #     self.direct = c.direc
+        # if c.src < c.dest:
+        #     self.direction = 1
+        # else:
+        #     self.direction = -1
 
     def getList(self):
         return self.list_c

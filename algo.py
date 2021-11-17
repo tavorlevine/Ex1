@@ -40,6 +40,12 @@ class algo:
                             time = elevtime
                             tempelev = elev.id
                     else:
+                        # if elev.direction != c.direc:
+                        #     if elev.id < self.b.count:
+                        #         continue
+                        #     else:
+                        #         tempelev = elev.id
+                        #         continue
                         if elev.list_c[len(elev.list_c) - 1].time + timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
                                                               elev.list_c[-1],
                                                               elev) < c.time:

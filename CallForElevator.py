@@ -16,13 +16,15 @@ class CallForElevator:
         self.dest = dest
         self.parmeter = parmeter
         self.elev = elev
-        # if self.dest - self.src > 0:
-        #     self.direc = 1
-        # else:
-        #     self.direc = -1
+        # self. direc = 0
 
     # def getState(self):
     #     return self.state
+    def direction(self):
+        if self.dest - self.src > 0:
+        #     self.direc = 1
+        # else:
+        #     self.direc = -1
 
     def getSrc(self):
         return self.src
