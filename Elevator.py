@@ -1,5 +1,4 @@
 from CallForElevator import CallForElevator
-from listCalls import listCalls
 
 
 class Elevator:
@@ -12,16 +11,12 @@ class Elevator:
         self.maxFloor = maxFloor
         self.openTime = openTime
         self.closeTime = closeTime
-        # self.pos = pos
-        # self.state = state
         self.startTime = startTime
         self.stopTime = stopTime
         self.list_c = []
         # self.direct = 0
         self.index = index
         self.sum = 0
-        # self.sumStages = 0
-        # self.direction = 0
 
     def toString(self):
         st = "id:{}, speed:{}, minFloor:{}, maxFloor:{}, openTime:{}, closeTime:{}, startTime:{}, stopTime:{}".format(

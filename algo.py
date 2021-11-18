@@ -1,11 +1,7 @@
-import csv
-import string
-
 from Elevator import Elevator
 from CallForElevator import CallForElevator
 from Building import Building
 from listCalls import listCalls
-import math
 
 
 class algo:
@@ -46,9 +42,13 @@ class algo:
                         #     else:
                         #         tempelev = elev.id
                         #         continue
-                        if elev.list_c[len(elev.list_c) - 1].time + timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
+                        timelastcall= elev.list_c[len(elev.list_c) - 1].time + timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
                                                               elev.list_c[-1],
-                                                              elev) < c.time:
+                                                              elev)
+                        if timelastcall < c.time:
+                            if (abs(elev.list_c[len(elev.list_c) - 1].dest - c.src) > 20) & (abs(c.src - c.dest)) < 10:
+                                tempelev = elev.id
+                                break
                             elevtime = timeOneCall(elev.list_c[-1].dest, c, elev)
                             if elevtime < time:
                                 time = elevtime
@@ -59,6 +59,9 @@ class algo:
                                 if list_2.index(c2) == (len(list_2) - 1):
                                     sumOfCall = len(elev.list_c) - elev.list_c.index(c2)
                                     elevtime = timeSumCalls(sumOfCall, c2.dest, c, elev)
+                                    if elevtime < time:
+                                        time = elevtime
+                                        tempelev = elev.id
                                 elif c2.time + timeOneCall(list_2[list_2.index(c2) + 1].dest, c2, elev) < c.time:
                                     elevtime = timeOneCall(c2.dest, c, elev)
                                     if elevtime < time:
@@ -72,8 +75,8 @@ class algo:
                                         time = elevtime
                                         tempelev = elev.id
                                     break
-            c.elev = tempelev
-            self.b.elevators[tempelev].addCalls(c)
+                c.elev = tempelev
+                self.b.elevators[tempelev].addCalls(c)
         list1.writeToCSV(self.output)
 
 # def allocate1 (self, list1: listCalls):

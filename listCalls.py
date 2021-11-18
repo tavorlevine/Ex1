@@ -1,6 +1,6 @@
 import csv
 from CallForElevator import CallForElevator
-# from algo import algo
+
 
 
 class listCalls:
@@ -12,7 +12,6 @@ class listCalls:
         self.loadCSV(self.file)
 
     def loadCSV(self, fileName):
-        # rows = []
         cl = []
         try:
             with open(fileName) as file:
@@ -21,11 +20,8 @@ class listCalls:
                     c = CallForElevator(header=row[0], time=float(row[1]), src=int(row[2]), dest=int(row[3]),
                                         parmeter=int(row[4]), elev=int(row[5]))
                     cl.append(c)
-                    # rows.append(row)
                     self.count = self.count + 1
                 self.calls = cl
-                # for i in self.calls:
-                #     print(i.toString())
         except IOError as e:
             print(e)
 
@@ -39,17 +35,6 @@ class listCalls:
                 csvwriter.writerows(new_calls)
         except IOError as e:
             print(e)
-
-    # def allocate(self, calls: listCalls, file):
-    #     for c in calls:
-    #         if self.Building.count == 1:
-    #             c.elev = 0
-    #         else:
-    #             for elev in Building.elevators:
-    #
-    #
-    #
-    #     self.writeToCSV(calls.file)
 
 
 if __name__ == '__main__':
