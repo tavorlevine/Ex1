@@ -105,3 +105,16 @@ def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
     elevtime = (elev.speed / stages) + (elev.stopTime + elev.startTime + elev.openTime) * sum_2 + elev.closeTime * (
             sum_2 - 1)
     return elevtime
+
+def reverse_list(list1: []):
+    list2 = []
+    for i in range(len(list1)):
+        list2.append(list1[-1-i])
+    return list2
+
+
+if __name__ == "__main__":
+    b1 = r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B3.json"
+    l1 = r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_d.csv"
+    o1 = r"out3d.csv"
+    algo(b1, l1, o1)
