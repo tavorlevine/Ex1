@@ -10,7 +10,7 @@ class CallForElevator:
         self.parmeter = parmeter
         self.elev = elev
 
-    # Getters.
+    # Getters
     def getSrc(self):
         return self.src
 

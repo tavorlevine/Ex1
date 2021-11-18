@@ -1,4 +1,6 @@
 # imports
+import sys
+
 from Elevator import Elevator
 from CallForElevator import CallForElevator
 from Building import Building
@@ -104,8 +106,15 @@ def reverse_list(list1: []):
     return list2
 
 
-if __name__ == "__main__":
-    b1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B2.json"
-    l1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_a.csv"
-    o1 = r"out1b.csv"
+# to start the algorithm
+files = sys.argv
+if len(files) > 3:
+    b1, l1, o1 = files[1], files[2], files[3]
     algo(b1, l1, o1)
+
+
+# if __name__ == "__main__":
+#     b1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B2.json"
+#     l1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_a.csv"
+#     o1 = r"outb.csv"
+#     algo(b1, l1, o1)
