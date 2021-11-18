@@ -1,14 +1,17 @@
+# imports
 import json
 from Elevator import Elevator
 
 
 class Building:
 
+    # constructor
     def __init__(self, file_name):
         self.elevators = []
         self.count = 0
         self.load_json(file_name)
 
+    # this function read the Json file
     def load_json(self, file_name):
         try:
             with open(file_name, "r+") as f:
@@ -24,20 +27,17 @@ class Building:
         except IOError as e:
             print(e)
 
+    # Getters
     def numberOfElevator(self):
         return self.count
 
     def getElevator(self, i: int):
         return self.elevators.get(self, i)
 
+    # toString function
     def toString(self):
         st = ""
         for elev in self.elevators:
             st += elev.toString()
         return st
 
-
-if __name__ == '__main__':
-    b1 = Building(r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B1.json")
-    print(b1.toString())
-    print(b1.elevators[0].speed)

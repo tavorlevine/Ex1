@@ -1,16 +1,18 @@
+# imports
 import csv
 from CallForElevator import CallForElevator
 
 
-
 class listCalls:
 
+    # constructor
     def __init__(self, file_name):
         self.count = 0
         self.calls = []
         self.file = file_name
         self.loadCSV(self.file)
 
+    # this function load the csv file
     def loadCSV(self, fileName):
         cl = []
         try:
@@ -25,6 +27,7 @@ class listCalls:
         except IOError as e:
             print(e)
 
+    # this function write to the out file the data from the allocate function
     def writeToCSV(self, out):
         new_calls = []
         for team in self.calls:
@@ -35,12 +38,4 @@ class listCalls:
                 csvwriter.writerows(new_calls)
         except IOError as e:
             print(e)
-
-
-if __name__ == '__main__':
-    l1 = listCalls(r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_b.csv")
-    # print(l1)
-    # l1.calls[0].elev = 23
-    # l1.writeToCSV()
-    # l1.allocate(l1)
 

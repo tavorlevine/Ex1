@@ -1,3 +1,4 @@
+# imports
 from Elevator import Elevator
 from CallForElevator import CallForElevator
 from Building import Building
@@ -6,6 +7,7 @@ from listCalls import listCalls
 
 class algo:
 
+    # constructor
     def __init__(self, building: str, calls: str, out: str):
         # self.build = building
         # self.calls = calls
@@ -14,20 +16,13 @@ class algo:
         self.b = Building(building)
         self.allocate(self.list)
 
-    # if __name__ == "__main__":
-
-    #     calls = listCalls(file_name)
-    #     allocate(calls)
-    # if __name__ == '__main__':
-
-    #    al.allocate(al.list)
-
+    # this function allocate elevator for each call and in the end send all the details to csv file
     def allocate(self, list1: listCalls):
         for c in list1.calls:
-            if self.b.count == 1:
+            if self.b.count == 1:  # if number of elevator in the building is 1
                 c.elev = 0
             else:
-                time = 9999999
+                time = 9999999  # default max time
                 tempelev = -1
                 for elev in self.b.elevators:
                     if len(elev.list_c) == 0:
@@ -36,15 +31,10 @@ class algo:
                             time = elevtime
                             tempelev = elev.id
                     else:
-                        # if elev.direction != c.direc:
-                        #     if elev.id < self.b.count:
-                        #         continue
-                        #     else:
-                        #         tempelev = elev.id
-                        #         continue
-                        timelastcall= elev.list_c[len(elev.list_c) - 1].time + timeOneCall(elev.list_c[len(elev.list_c) - 2].dest,
-                                                              elev.list_c[-1],
-                                                              elev)
+                        timelastcall = elev.list_c[len(elev.list_c) - 1].time + timeOneCall(
+                            elev.list_c[len(elev.list_c) - 2].dest,
+                            elev.list_c[-1],
+                            elev)
                         if timelastcall < c.time:
                             if (abs(elev.list_c[len(elev.list_c) - 1].dest - c.src) > 20) & (abs(c.src - c.dest)) < 10:
                                 tempelev = elev.id
@@ -79,19 +69,17 @@ class algo:
                 self.b.elevators[tempelev].addCalls(c)
         list1.writeToCSV(self.output)
 
-# def allocate1 (self, list1: listCalls):
-#     for c in list1.calls:
-#         if (abs(c.dest - c.src) < self.b.min)
 
-
+# the function return how long does it take for the elevator from start position ( 0 flor) to the src of the first call
 def timeFromTo(c: CallForElevator, elev: Elevator):
-    # if len(elev.list_c) == 0:
     stages = abs(0 - c.src)
     stages = stages + abs(c.src - c.dest)
     elevtime = (elev.speed / stages) + elev.stopTime + elev.startTime + elev.openTime + elev.closeTime
     return elevtime
 
 
+# this function return how long does it take for elevator to make one call
+# from current position until call destination
 def timeOneCall(pos: int, c: CallForElevator, elev: Elevator):
     stages = abs(pos - c.src)
     stages = stages + abs(c.src - c.dest)
@@ -99,7 +87,7 @@ def timeOneCall(pos: int, c: CallForElevator, elev: Elevator):
     return elevtime
 
 
-# this function returns How long does it take for the elevator to make a lot of calls
+# this function returns how long does it take for the elevator to make a lot of calls
 def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
     stages = abs(pos - c.getSrc())
     stages = stages + abs(c.src - c.dest)
@@ -112,12 +100,12 @@ def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
 def reverse_list(list1: []):
     list2 = []
     for i in range(len(list1)):
-        list2.append(list1[-1-i])
+        list2.append(list1[-1 - i])
     return list2
 
 
 if __name__ == "__main__":
-    b1 = r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B3.json"
-    l1 = r"C:\Users\חן שטינמץ\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_d.csv"
-    o1 = r"out3d.csv"
+    b1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B4.json"
+    l1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_d.csv"
+    o1 = r"out4d.csv"
     algo(b1, l1, o1)
