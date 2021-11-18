@@ -105,7 +105,7 @@ def reverse_list(list1: []):
 
 
 if __name__ == "__main__":
-    b1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B4.json"
-    l1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_d.csv"
-    o1 = r"out4d.csv"
+    b1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Buildings\B2.json"
+    l1 = r"C:\Users\tavor\PycharmProjects\Ex1\data\Ex1_input\Ex1_Calls\Calls_a.csv"
+    o1 = r"out1b.csv"
     algo(b1, l1, o1)
