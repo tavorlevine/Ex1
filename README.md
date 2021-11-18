@@ -1,6 +1,7 @@
 # Ex1
 In this project we went to implement an offline algorithm that receives a list of calls to elevator and returns an update list that any call in the list receives the best elevator for her. 
 In the process, we made a research and read the following articles:
+
 1.https://www.cs.huji.ac.il/~ai/projects/2014/The_intelevator/files/report.pdf 
 
 2.https://www.geeksforgeeks.org/smart-elevator-pro-geek-cup 
