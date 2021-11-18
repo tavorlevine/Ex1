@@ -99,6 +99,7 @@ def timeOneCall(pos: int, c: CallForElevator, elev: Elevator):
     return elevtime
 
 
+# this function returns How long does it take for the elevator to make a lot of calls
 def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
     stages = abs(pos - c.getSrc())
     stages = stages + abs(c.src - c.dest)
@@ -106,6 +107,8 @@ def timeSumCalls(sum_2: int, pos: int, c: CallForElevator, elev: Elevator):
             sum_2 - 1)
     return elevtime
 
+
+# this function returns the list in reverse order
 def reverse_list(list1: []):
     list2 = []
     for i in range(len(list1)):
