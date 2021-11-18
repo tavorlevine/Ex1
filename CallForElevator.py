@@ -20,7 +20,7 @@ class CallForElevator:
     def getDirec(self):
         return self.direc
 
-    # toString function.
+    # toString function
     def toString(self):
         st = "time:{}, src:{}, dest:{}, elevator:{}".format(self.time, self.src, self.dest, self.elev)
         return st
